@@ -166,9 +166,7 @@
                            <el-tooltip placement="top">
                               <template #content>
                                  <div>
-                                    Bean调用示例：ryTask.ryParams('ry')
-                                    <br />Class类调用示例：top._867007845.quartz.task.RyTask.ryParams('ry')
-                                    <br />参数说明：支持字符串，布尔类型，长整型，浮点型，整型
+                                    http调用形式，输入可使用的http/https接口即可，如：http://localhost:8080/test/job/test01
                                  </div>
                               </template>
                               <el-icon><question-filled /></el-icon>
@@ -178,6 +176,11 @@
                      <el-input v-model="form.invokeTarget" placeholder="请输入调用目标字符串" />
                   </el-form-item>
                </el-col>
+              <el-col :span="24">
+                <el-form-item label="请求参数">
+                  <el-input type="textarea" v-model="form.requestBody" placeholder="请输入请求参数，JSON格式"></el-input>
+                </el-form-item>
+              </el-col>
                <el-col :span="24">
                   <el-form-item label="cron表达式" prop="cronExpression">
                      <el-input v-model="form.cronExpression" placeholder="请输入cron执行表达式">
@@ -347,6 +350,7 @@ function reset() {
     jobName: undefined,
     jobGroup: undefined,
     invokeTarget: undefined,
+    requestBody: undefined,
     cronExpression: undefined,
     misfirePolicy: 1,
     concurrent: 1,
